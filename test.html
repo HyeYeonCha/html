@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Twitter 연습</title>
+    <style>
+        #title {
+            background-color: aliceblue;
+            text-align: center;
+            border: 3px solid lightblue;
+        }
+
+        #body {
+            background-color: lightblue;
+            border: 1px hidden;
+            margin-top: 30px;
+        }
+
+        #contents {
+            margin: 6px
+        }
+
+        #load {
+            background-color: blue;
+            margin-top: 20px;
+            height: 80px;
+        }
+
+        #tweets {
+            background-color: lightblue;
+            height: 200px;
+        }
+
+        .tweet {
+            list-style-type: none;
+            border-bottom: 2px solid gray;
+        }
+
+        .tweet span {
+            float: right;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="title">
+        <h1>Twitter</h1>
+    </div>
+    <div id="body">
+        <div id="contents">UserName</div>
+        <input id="contents" type="text">
+        <div id="contents">Comment</div>
+        <div id="contents"><textarea style="width: 400px; height: 100px;"></textarea></div>
+        <button id="contents" style="width: 70px; height: 40px;">Tweet!</button>
+    </div>
+    <div id="load">
+        <button style="margin: 20px 20px; height: 40px;">Check new tweet</button>
+    </div>
+    <div id="tweets">
+        <ul>
+
+            <li class="tweet">
+                <div><b>userName1</b><span>2020-09-21 16 : 11</span></div>
+                <div>tweetsssssss</div>
+            </li>
+            <li class="tweet">
+                <div><b>userName2</b><span>2020-09-21 16 : 11</span></div>
+                <div>tweetsssssdsafdsa</div>
+            </li>
+            <li class="tweet">
+                <div><b>userName3</b><span>2020-09-21 16 : 11</span></div>
+                <div>tweetsssssffdsfdss</div>
+            </li>
+
+        </ul>
+    </div>
+</body>
+
+</html>
