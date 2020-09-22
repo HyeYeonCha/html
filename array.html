@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Array Practice</title>
+    <style>
+        #wrapper {
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        form {
+            background-color: #007acc;
+            padding: 30px 40px;
+            color: white;
+            text-align: center;
+        }
+
+        input {
+            border: none;
+            width: 440px;
+            padding: 10px;
+            float: left;
+            font-size: 16px;
+        }
+
+        .addBtn {
+            padding: 10px;
+            width: 50px;
+            border: none;
+            background-color: #fff;
+            box-shadow: 1px 2px 4px #167dae;
+            color: #555;
+            text-align: center;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3;
+        }
+
+        form::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        ul li {
+            cursor: pointer;
+            position: relative;
+            padding: 12px 8px 12px 40px;
+            background: #eee;
+            font-size: 18px;
+            transition: 0.2s;
+        }
+
+        ul li:nth-child(odd) {
+            background-color: #f9f9f9;
+        }
+
+        ul li:hover {
+            background-color: #ddd;
+        }
+
+        .close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 12px 16px;
+            border: none;
+            background: rgba(255, 255, 255, 0)
+        }
+
+        .close:hover {
+            background-color: #007acc;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>수업시간 준비물 챙기기</h2>
+    <form id="warp">
+        <input type="text" id="item" placeholder="준비물을 입력하세요.">
+        <button type="button" id="add" class="addBtn">제출</button>
+    </form>
+    <div id="itemlist">
+
+    </div>
+
+    <script>
+        var itemList = [];
+        var addBtn = document.querySelector("#add");
+
+        // 버튼에 클릭 이벤트 리스너 추가
+        addBtn.addEventListener("click", addList);
+
+        function addList() {
+            var item = document.querySelector("#item").value;
+            if (item != null) {
+                itemList.push(item);
+                item = document.querySelector("#item").value = "";
+                item = document.querySelector("#item").focus();
+            }
+            showList();
+        }
+
+        function showList() {
+            var list = "<ul>";
+            for (var i = 0; i < itemList.length; i++) {
+                list += `<li> ${itemList[i]} <span class ='close' id='${i}'>X</span></li>`;
+            }
+
+            list += "</ul>";
+
+            // 화면에 값 출력 
+            document.querySelector("#itemlist").innerHTML = list;
+
+            // 해당 html문서내의 요소중 클래스이름이 .closw로 되어있는 모든 요소를 조회함.
+            var removeSpans = document.querySelectorAll(".close");
+
+            for (var i = 0; i < removeSpans.length; i++) {
+                // 개별 span 태그에 클릭이벤트 
+                removeSpans[i].addEventListener("click", removeList);
+            }
+
+        }
+
+        function removeList() {
+            // html 요소내의 각종 속성값을 추출할때 getAttribute('속성명')으로 값을 추출
+            var id = this.getAttribute("id");
+            // 배열에서 지정한 인덱스에서 지정갯수만큼 잘라낸다.
+            itemList.splice(id, 1);
+            showList();
+        }
+
+    </script>
+</body>
+
+</html>
